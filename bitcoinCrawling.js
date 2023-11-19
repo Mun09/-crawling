@@ -1,3 +1,4 @@
+// import { puppeteer } from 'puppeteer';
 const puppeteer = require('puppeteer');
 
 async function getAll(page) {
@@ -37,8 +38,8 @@ async function getOne(page, index) {
     return Promise.resolve(data);
 }
 
-(async () => {
-    const browser = await puppeteer.launch({
+export const bitcoinCrawling = async () => {
+    const browser = await puppeteer.connect({
         headless: false
     });
     const page = await browser.newPage();
@@ -55,4 +56,6 @@ async function getOne(page, index) {
 
     
     await browser.close();
-})();
+};
+
+export default bitcoinCrawling;
